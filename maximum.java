@@ -10,10 +10,12 @@ public class maximum
 	
 	
 	
-	
+	// -------------------------------------------------------------
+	// Aufgabe 4 P T3 a
+	// -------------------------------------------------------------
 	public static int sortiertAufsteigend(int[] array)
 	{	
-		//aufgabe 4 P T3
+
 		int maximum=0;
 		int temp;
 		for(int i=0; i<array.length-1;i++)
@@ -33,7 +35,9 @@ public class maximum
 	
 	
 	
-	
+	// -------------------------------------------------------------
+	// Aufgabe 4 P T3 b und c(abgewandelt mit zufällig erstellten arrays)
+	// -------------------------------------------------------------
 	public static int shuffle(int[] array, int[] arrayZwei)
 	{
 		int[] arrayMischung = {};
@@ -49,12 +53,14 @@ public class maximum
 		System.out.println("\n*******");
 		sortiertAufsteigend(arrayMischung);
 		minMaxAusgabe(arrayMischung);
-		//funktionen noch umnennenS
 		return 0;
 	}
 	
 	
 	
+	// -------------------------------------------------------------
+	// Hilfsfunktion für shuffle(...)
+	// -------------------------------------------------------------
 	public static int copyArray(int[] array, int[] arrayZwei, int counter)
 	{	
 		
@@ -72,6 +78,9 @@ public class maximum
 	
 	
 	
+	// -------------------------------------------------------------
+	// Aufsteigende Ausgabe für Arrays
+	// -------------------------------------------------------------
 	public static void minMaxAusgabe(int[] array)
 	{
 		for(int j=0; j<=array.length-1; j++)
@@ -87,12 +96,13 @@ public class maximum
 	
 	
 	
-	public static int[] createArray(int leange, int[] array)
+	
+	public static int[] createArray(int leange, int[] array, int zahlenReichWeite)
 	{ 
 		
 		for(int i=0; i<leange;i++)
 		{	
-			 array[i]=random.nextInt(leange);	 
+			 array[i]=random.nextInt(zahlenReichWeite);	 
 		}
 		return array;
 		
@@ -100,23 +110,47 @@ public class maximum
 	
 	
 	
-	//aufgabe 1 P T3
+	// -------------------------------------------------------------
+	//Fakultätsbestimmung
+	// -------------------------------------------------------------
+	public static int rekursivFunction(int eingabe)
+	{
+		if(eingabe==1)
+		{
+			return eingabe;
+		}
+		else 
+		{
+			return eingabe* rekursivFunction(eingabe -1);
+		}
+	}
+	
+	
+	
+	// -------------------------------------------------------------
+	// Aufgabe 1 P T3
+	// -------------------------------------------------------------
 	public static void main(String[] args)
 	{	
 		int[] array;
 		int[] arrayZwei= {};
 		int maxWert=0;		
 		int reichWeite=0;
+		int zahlenReichWeite=0;
 		int reichWeiteArrayZwei=0;
 		//Arrays erstellen
-		System.out.println("***Array 2 Zufallszahlen mit Zufallsgröße, geben sie Spannweite der Zahlen ein?***\n");
+		System.out.println("***Array 1 Reichweite bzw Länge eingeben.***\n");
 		reichWeite=scanner.nextInt();
+		System.out.println("***Array 1 ZahlenRaum bzw Länge eingeben.***\n");
+		zahlenReichWeite=scanner.nextInt();
 		array =new int[reichWeite];
-		array=createArray(reichWeite,array);
-		System.out.println("\n***Array 2 Zufallszahlen mit Zufallsgröße, geben sie Spannweite der Zahlen ein***\n");
+		array=createArray(reichWeite,array,zahlenReichWeite);
+		System.out.println("***Array 2 Reichweite bzw Länge eingeben.***\n");
 		reichWeite=scanner.nextInt();
+		System.out.println("***Array 2 ZahlenRaum bzw Länge eingeben.***\n");
+		zahlenReichWeite=scanner.nextInt();
 		arrayZwei = new int[reichWeite];
-		arrayZwei= createArray(reichWeite,arrayZwei);
+		arrayZwei= createArray(reichWeite,array,zahlenReichWeite);
 		//
 		//arrays sortieren und ausgeben
 		maxWert=sortiertAufsteigend(array);
@@ -129,5 +163,10 @@ public class maximum
 		//
 		//aufge4 4 P T3
 		shuffle(array,arrayZwei);
+		//Test für rekursive Funktion für fakultätsbestimmung für den wert von reichweite.
+		//vorbehalten
+		reichWeite=rekursivFunction(reichWeite);
+		System.out.println(reichWeite);
+		//
 		}
 }
