@@ -1,95 +1,150 @@
 package Bank;
-import java.util.Scanner;
-//TODO Überweisung von das eine auf das andere Konto durchführen!
 
-public class Main
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main 
 {
 
-	public static double sicheresAuszahlen(Bank konto, int eingabe, boolean karteAngenommen) 
+	
+	public static void kontoAnzeige(Bank konto)
 	{
-		if (konto.kontoStand <= -1000) {
-			System.out.println("Eingabe ungülitg, Dispolimit wird sonst überzogen.");
-			konto.getKarteAngenommen();
-			konto.karteAngenommen = false;
-			konto.setKarteAngenommen(konto.karteAngenommen);
-			System.out.println("Karte wird ausgegeben.\n");
-			System.out.println("Programm wird beendet.");
-			konto.setKarteAngenommen(konto.karteAngenommen);
-			return konto.kontoStand;
-		} else {
-			System.out.println("\n Kontostand: " + konto.kontoStand);
-			konto.getKarteAngenommen();
-			konto.karteAngenommen = false;
-			konto.setKarteAngenommen(konto.karteAngenommen);
-			System.out.println("Karte wird ausgegeben.\n");
-			System.out.println("Programm wird beendet.");
-			konto.setKarteAngenommen(konto.karteAngenommen);
-			return konto.kontoStand;
-		}
+		System.out.println("************************************");
+		System.out.println("Kontonummer:"+konto.kontoNummer);
+		System.out.println("Kontostand:"+konto.kontoStand);
+		System.out.println("Dispolimit:"+konto.dispoLimit);
+		System.out.println("Gepserrt?:"+konto.gesperrt);
+		System.out.println("************************************");
 	}
-
-	public static void main(String[] args)
+	
+	
+	
+	public static double sicheresÜberweisen(double überweisung,Bank konto)
 	{
-		Bank konto = new Bank(0, 0, 0, false);
+		
+		konto.kontoStand=konto.kontoStand+überweisung;
+		return konto.kontoStand;
+	}
+	
+	
+	public static double sicheresAuszahlen(double auszahlung, Bank konto)
+	{
+		konto.kontoStand=konto.kontoStand-auszahlung;
+		return konto.kontoStand;
+	}
+	
+	
+	
+	public static void main(String[] args) 
+	{
+		// Deklaration
 		Scanner scanner = new Scanner(System.in);
-		int eingabe = 0;
-		String auswahl = null;
-		System.out.println("*****Spaßkasse Haltern am See*****\\n");
-		System.out.println("Wollen sie ein Konto erstellen oder auf ihr bestehendes zugreifen?\n");
-		System.out.println("1. erstellen  |   2. zugreifen\n");
-		eingabe = scanner.nextInt();
-		if(eingabe ==1)
+		int eingabe;
+		double überweisung = 0;
+		double auszahlung =0;
+		int nummer = 1;
+		boolean running = true;
+		ArrayList<Bank> konten = new ArrayList<>();
+		//
+		while (running == true) 
 		{
-			System.out.println("***Konto wird erstelt***");
-			System.out.println("\n erstellen sie eine Kontonummer");
-			eingabe=scanner.nextInt();
-			KontoTest kontoTest = new KontoTest(eingabe,0,1000,false);
-			System.out.println("\n***Konto erstellt***\n");
-			System.out.println("Kontonummer: "+kontoTest.kontoNummer);
-			System.out.println("\nKontostand: "+ kontoTest.kontoStand);
-		}
-		if (eingabe == 2) 
-		{
-			System.out.println("*****Spaßkasse Haltern am See*****\n");
-			System.out.println("Geben sie ihre Kontnonummer ein: ");
-			eingabe = scanner.nextInt();
-			konto.setKontoNummer(eingabe);
-			System.out.println("Eingabe:" + eingabe);
-			konto.setKontoNummer(eingabe);
-		}
-			scanner.nextLine(); // Puffer leeren
-			konto.karteAngenommen = true;
-			konto.setKarteAngenommen(konto.karteAngenommen);
-			konto.getKarteAngenommen();
-			while (konto.karteAngenommen == true)
-			{
-				System.out.println("Möchten sie Geld abheben oder einzahlen?\n");
-				System.out.println("Geben sie auszahlen oder einzahlen ein:");
-				auswahl = scanner.nextLine();
 
-				if (auswahl.equals("einzahlen") || auswahl.equals("Einzahlen")) 
+			System.out.println("*****Spsßkasse Haltern am See*****\n");
+			System.out.println("Bitte wählen sie: ");
+			System.out.println("\n 1. Konto erstellen\n 2. Überweisung\n 3. Einzahlung\n 4. Kontenübersicht \n 5. Programm Beenden\n");
+			System.out.println("Eingabe: ");
+			eingabe = scanner.nextInt();
+			switch (eingabe) 
+			{
+				case 1: 
 				{
-					System.out.println("\nWie viel möchten sie einzahlen?: ");
-					eingabe = scanner.nextInt();
-					konto.getKontostand();
-					konto.setKontostand(konto.kontoStand + eingabe);
-					System.out.println("Kontostand: " + konto.kontoStand);
-					scanner.nextLine(); // Puffer leeren
+					System.out.println("******Konto wird erstellt.******\n");
+					Bank konto = new Bank(nummer, 0, 0, false, false);
+					konten.add(konto);
+					nummer++;
+					kontoAnzeige(konto);
+					System.out.println("**********************************");
+					continue;
+	
+				}
+				
+				case 2:
+				{
+					System.out.println("Geben sie die Kontonummer ein auf die sie überweisen möchten\n");
+					System.out.println("Eingabe: ");
+					eingabe=scanner.nextInt();
+					for(Bank konto : konten)
+					{
+						if(eingabe==konto.kontoNummer)
+						{	
+							System.out.println("gefunden");
+							System.out.println("Geben sie die Summe ein die sie Überweisen möchten.\n");
+							System.out.println("Eingabe: ");
+							überweisung=scanner.nextDouble();
+							konto.kontoStand=sicheresÜberweisen(überweisung,konto);
+							System.out.println("Überweisung getätigt!\n");
+							kontoAnzeige(konto);
+							
+						}	
+					}
+					
+					System.out.println("Welches Konto soll davon belastet werden?\n");
+					eingabe=scanner.nextInt();
+					for(Bank konto : konten)
+					{
+						if(eingabe==konto.kontoNummer)
+						{
+							konto.kontoStand=konto.kontoStand-überweisung;
+							kontoAnzeige(konto);
+						}
+					}
 					continue;
 				}
-
-				if (auswahl.equals("auszahlen") || auswahl.equals("Auszahlen"))
+				
+				case 3:
 				{
-					System.out.println("Wie viel Geld möchten sie abheben?: ");
-					eingabe = scanner.nextInt();
-					konto.getKontostand();
-					konto.setKontostand(konto.kontoStand - eingabe);
-					sicheresAuszahlen(konto, eingabe, konto.karteAngenommen);
-					scanner.nextLine(); // Puffer leeren
+					System.out.println("Von welchen Konto möchten sie sich Geld auszahlen lassen?\n");
+					System.out.println("Eingabe: ");
+					eingabe=scanner.nextInt();
+					for(Bank konto : konten)
+					{
+						if(eingabe==konto.kontoNummer)
+						{
+							System.out.println("\n Geben sie den Betrag ein den sie sich auszahlen lassen möchten.\n");
+							System.out.println("Eingabe: ");
+							auszahlung=scanner.nextDouble();
+							sicheresAuszahlen(auszahlung, konto); 
+							kontoAnzeige(konto);
+							
+						}
+					}
 					continue;
+				}
+				
+				case 4:
+				{
+					System.out.println("*******Kontenübersicht******\n");
+					for(Bank konto: konten)
+					{
+						kontoAnzeige(konto);
+					}
+					continue;
+				}
+				
+				case 5:
+				{	
+					System.out.println("Programm wird beendet!");
+					running=false;
+					break;
+				}
+				
+				default:
+				{
+					System.out.println("Programm wird beendet!");
+					break;
 				}
 			}
-		
-
+		}
 	}
+
 }
