@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JavaGrundlagenWinFo.iml" filepath="$PROJECT_DIR$/JavaGrundlagenWinFo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grundlagen/src/Grundlagen.iml" filepath="$PROJECT_DIR$/Grundlagen/src/Grundlagen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grundlagen/src/JavaGrundlagenWinFo.iml" filepath="$PROJECT_DIR$/Grundlagen/src/JavaGrundlagenWinFo.iml" />
     </modules>
   </component>
 </project>
