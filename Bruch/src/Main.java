@@ -4,91 +4,76 @@ import java.util.Scanner;
 
 public class Main
 {
-    //Bruch erstellen
+
     public static void main(String[] args)
+    {
+        Scanner scanner=new Scanner(System.in);
+        int nenner;
+        int zaehler;
+        int gemischteZahl;
+        double ergebnis;
+        int eingabe;
+        int schleifenzaehler=0;
+        Bruch bruch = new Bruch(0,0,0,0);
+        Bruch2 bruch2 = new Bruch2(0,0,0,0);
+
+
+        //Bruch erstellen
+        while (schleifenzaehler < 2)
         {
-            Scanner scanner = new Scanner(System.in);
-            int zaheler;
-            int nenner;
-            int summand;
-            int eingabe;
-            int bruchID=1;
-            int bruchMenge;
-            double ergebnis=0;
-            ArrayList<Bruch> brueche = new ArrayList<>();
+            System.out.println("***Geben sie die Werte für den Bruch ein***");
+            System.out.print("\n Gemischte Zahl: ");
+            gemischteZahl = scanner.nextInt();
+            System.out.print("\n Nenner: ");
+            nenner = scanner.nextInt();
+            System.out.print("\n Zähler: ");
+            zaehler = scanner.nextInt();
 
-            while(true)
-            {
-                System.out.println("Eingabe von der Gemischten Zahl \n");
-                System.out.println("Eingabe: \n");
-                summand = scanner.nextInt();
-                System.out.println("Eingabe vom Nenner \n");
-                System.out.println("Eingabe: \n");
-                nenner = scanner.nextInt();
-                System.out.println("Eingabe vom zähler \n");
-                System.out.println("Eingabe: \n");
-                zaheler = scanner.nextInt();
-                Bruch bruch = new Bruch(zaheler, nenner, summand, bruchID);
-                erstelleBruch(bruch, zaheler, nenner, summand);
-                brueche.add(bruch);
-                System.out.println(bruch.summand +" " +bruch.zaehler + "/" + bruch.nenner);
-                System.out.println("\n\n\nMöchten sie zu dem Bruch einen weiteren Bruch addieren?\n");
-                System.out.println("1. ja \t | \t 2. Nein\n");
-                System.out.println("Eingabe: \n");
-                eingabe = scanner.nextInt();
-                if (eingabe == 1)
-                {
-
-                    System.out.println("Eingabe von der Gemischten Zahl \n");
-                    System.out.println("Eingabe: \n");
-                    summand = scanner.nextInt();
-                    System.out.println("Eingabe vom Nenner \n");
-                    System.out.println("Eingabe: \n");
-                    nenner = scanner.nextInt();
-                    System.out.println("Eingabe vom zähler \n");
-                    System.out.println("Eingabe: \n");
-                    zaheler = scanner.nextInt();
-                    Bruch bruch2 = new Bruch(zaheler, nenner, summand, bruchID);
-                    erstelleBruch(bruch2, zaheler, nenner, summand);
-                    System.out.println(bruch.summand +" " +bruch.zaehler + "/" + bruch.nenner);
-                    ergebnis=addiereBruch(bruch,bruch2, zaheler, nenner, summand, bruchID);
-                    System.out.printf("****Ergebnis: %.2f%n", ergebnis);
-
-                }
-                if (eingabe == 2)
-                {
-                    break;
-                }
+            if (schleifenzaehler == 0) {
+                // 1. Durchlauf -> ersten Bruch setzen
+                erstelleBruch(bruch, gemischteZahl, nenner, zaehler);
+            } else {
+                // 2. Durchlauf -> zweiten Bruch setzen und dann addieren
+                erstelleBruch2(bruch2, gemischteZahl, nenner, zaehler);
+                addieren(bruch, bruch2);
             }
+
+            schleifenzaehler++;
         }
+    }
 
 
-        public static double addiereBruch(Bruch bruch,Bruch bruch2,int zaheler,int nenner, int summand,double ergebnis)
-        {
-            bruch.getNenner();
-            bruch.getSummand();
-            bruch.getZaehler();
-            bruch.setNenner(bruch.nenner+bruch2.nenner);
-            bruch.setSummand(bruch.summand+bruch2.summand);
-            bruch.setZaehler(summand+bruch2.zaehler);
-            ergebnis = bruch.summand + ((double) bruch.zaehler / bruch.nenner);
-            ergebnis = Math.round(ergebnis * 100.0) / 100.0;
-            return ergebnis;
-        }
+    public static void erstelleBruch(Bruch bruch,int gemischteZahl, int nenner, int zaehler)
+    {
 
 
-        public static void erstelleBruch(Bruch bruch,int zaheler,int nenner, int summand)
-        {
-            bruch.getNenner();
-            bruch.getSummand();
-            bruch.getZaehler();
-            bruch.setNenner(nenner);
-            bruch.setSummand(summand);
-            bruch.setZaehler(zaheler);
-        }
+        bruch.setSummand(gemischteZahl);
+        bruch.setZaehler(zaehler);
+        bruch.setNenner(nenner);
+
+    }
+
+    public static void erstelleBruch2(Bruch2 bruch2,int gemischteZahl, int nenner, int zaehler)
+    {
+
+        bruch2.setSummand(gemischteZahl);
+        bruch2.setZaehler(zaehler);
+        bruch2.setNenner(nenner);
+
+    }
 
 
 
+    public static void addieren(Bruch bruch,Bruch2 bruch2)
+    {
 
-//ARRAY LISTE kommt in Zukunft noch
+        long z1 = (long)bruch.summand * bruch.nenner + bruch.zaehler;
+        long n1 = bruch.nenner;
+        long z2 = (long)bruch2.summand * bruch2.nenner + bruch2.zaehler;
+        long n2 = bruch2.nenner;
+
+        double ergebnis = (double)(z1 * n2 + z2 * n1) / (double)(n1 * n2);
+        System.out.println("\nDezimal (Summe): " + ergebnis);
+
+    }
 }

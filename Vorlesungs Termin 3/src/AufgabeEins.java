@@ -10,6 +10,7 @@ public class AufgabeEins
         y=rand.nextInt(100);
         z=rand.nextInt(100);
         int temp;
+
         int[] array=new int[3];
         int[] array2=new int[3];
         int[] arrayGemischt= new int[array.length+array2.length];
