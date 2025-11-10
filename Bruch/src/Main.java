@@ -15,7 +15,7 @@ public class Main
         int eingabe;
         int schleifenzaehler=0;
         Bruch bruch = new Bruch(0,0,0,0);
-        Bruch2 bruch2 = new Bruch2(0,0,0,0);
+        Bruch bruch2 = new Bruch(0,0,0,0);
 
 
         //Bruch erstellen
@@ -53,7 +53,7 @@ public class Main
 
     }
 
-    public static void erstelleBruch2(Bruch2 bruch2,int gemischteZahl, int nenner, int zaehler)
+    public static void erstelleBruch2(Bruch bruch2,int gemischteZahl, int nenner, int zaehler)
     {
 
         bruch2.setSummand(gemischteZahl);
@@ -64,7 +64,7 @@ public class Main
 
 
 
-    public static void addieren(Bruch bruch,Bruch2 bruch2)
+    public static void addieren(Bruch bruch,Bruch bruch2)
     {
 
         long z1 = (long)bruch.summand * bruch.nenner + bruch.zaehler;
