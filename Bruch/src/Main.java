@@ -19,6 +19,17 @@ public class Main
 
 
         //Bruch erstellen
+        System.out.println("Welche Berechnung soll durchgeführt werden?");
+        System.out.println("\n 1. Addition");
+        System.out.println("\n 2. Subtraktion");
+        System.out.println("\n 3. Multiplikation");
+        System.out.println("\n 4. Division");
+        eingabe=scanner.nextInt();
+        if(eingabe>4 || eingabe<0)
+        {
+            System.out.println("Fehler!");
+            return;
+        }
         while (schleifenzaehler < 2)
         {
             System.out.println("***Geben sie die Werte für den Bruch ein***");
@@ -34,8 +45,25 @@ public class Main
                 erstelleBruch(bruch, gemischteZahl, nenner, zaehler);
             } else {
                 // 2. Durchlauf -> zweiten Bruch setzen und dann addieren
+
                 erstelleBruch2(bruch2, gemischteZahl, nenner, zaehler);
-                addieren(bruch, bruch2);
+                switch (eingabe) {
+                    case 1:
+                        addieren(bruch, bruch2);
+                        break;
+
+                    case 2:
+                        subtraktion(bruch, bruch2);
+                        break;
+
+                    case 3:
+                        multiplication(bruch, bruch2);
+                        break;
+
+                    case 4:
+                        division(bruch, bruch2);
+                        break;
+                }
             }
 
             schleifenzaehler++;
@@ -75,5 +103,52 @@ public class Main
         double ergebnis = (double)(z1 * n2 + z2 * n1) / (double)(n1 * n2);
         System.out.println("\nDezimal (Summe): " + ergebnis);
 
+    }
+
+
+    public static void subtraktion(Bruch bruch,Bruch bruch2)
+    {
+        long z1 = (long)bruch.summand * bruch.nenner + bruch.zaehler;
+        long n1 = bruch.nenner;
+        long z2 = (long)bruch2.summand * bruch2.nenner + bruch2.zaehler;
+        long n2 = bruch2.nenner;
+
+        double ergebnis = (double)(z1 * n2 - z2 * n1) / (double)(n1 * n2);
+        System.out.println("\nDezimal (Summe): " + ergebnis);
+    }
+
+
+    public static void multiplication(Bruch bruch,Bruch bruch2)
+    {
+        long z1 = (long)bruch.summand * bruch.nenner + bruch.zaehler;
+        long n1 = bruch.nenner;
+        long z2 = (long)bruch2.summand * bruch2.nenner + bruch2.zaehler;
+        long n2 = bruch2.nenner;
+
+        double ergebnis =  ((double)z1 / n1) * ((double)z2 / n2);
+        System.out.println("\nDezimal (Summe): " + ergebnis);
+    }
+
+
+    public static void division(Bruch bruch,Bruch bruch2)
+    {
+        long z1 = (long)bruch.summand * bruch.nenner + bruch.zaehler;
+        long n1 = bruch.nenner;
+        long z2 = (long)bruch2.summand * bruch2.nenner + bruch2.zaehler;
+        long n2 = bruch2.nenner;
+        double bruch2KehrWert=kehrWerte(bruch2);
+        double ergebnis =  ((double)z1 / n1) * ((double)bruch2KehrWert);
+        System.out.println("\nDezimal (Summe): " + ergebnis);
+    }
+
+
+    public static double kehrWerte(Bruch bruch2)
+    {
+
+        long z2 = (long)bruch2.summand * bruch2.nenner + bruch2.zaehler;
+        long n2 = bruch2.nenner;
+
+       double kehrwert=(double)n2 / z2;
+       return kehrwert;
     }
 }
