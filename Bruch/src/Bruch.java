@@ -1,64 +1,54 @@
 package Bruch.src;
 
-public class Bruch
-{
+public class Bruch {
     int zaehler;
     int nenner;
     int summand;
     int bruchID;
 
-    public Bruch(int zaehler, int nenner,int summand,int bruchID)
-    {
+    public Bruch(int zaehler, int nenner, int summand, int bruchID) {
         this.zaehler = zaehler;
         this.nenner = nenner;
-        this.summand=summand;
+        this.summand = summand;
     }
 
 
-    int getBruchID()
-        {
+    int getBruchID() {
         return bruchID;
-        }
+    }
 
 
-    int getZaehler()
-    {
+    int getZaehler() {
         return this.zaehler;
     }
 
 
-    int getNenner()
-    {
+    int getNenner() {
         return this.nenner;
     }
 
 
-     int getSummand()
-    {
+    int getSummand() {
         return this.summand;
     }
 
 
-    void setBruchID(int bruchID)
-    {
+    void setBruchID(int bruchID) {
         this.bruchID = bruchID;
     }
 
 
-    void setZaehler(int zaehler)
-    {
+    void setZaehler(int zaehler) {
         this.zaehler = zaehler;
     }
 
 
-   void setNenner(int nenner)
-    {
+    void setNenner(int nenner) {
         this.nenner = nenner;
     }
 
 
-    void setSummand(int summand)
-    {
+    void setSummand(int summand) {
         this.summand = summand;
     }
 }
