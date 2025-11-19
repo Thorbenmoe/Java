@@ -4,4 +4,9 @@ public class MacBook extends Laptop {
         super(marke, ram, cpu, Preis);
     }
 
+    public void macBook()
+    {
+        System.out.println("\n"+marke+" startet");
+    }
+
 }
