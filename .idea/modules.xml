@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Baiscs/Java_AOP1.iml" filepath="$PROJECT_DIR$/Baiscs/Java_AOP1.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/src.iml" filepath="$PROJECT_DIR$/src/src.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Vererbungen/Assoziation/Assoziation.iml" filepath="$PROJECT_DIR$/Vererbungen/Assoziation/Assoziation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AssoziationUebung/AssoziationUebung.iml" filepath="$PROJECT_DIR$/AssoziationUebung/AssoziationUebung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vorlesungs Termin 3/AufgabeZwei/AufgabeZwei.iml" filepath="$PROJECT_DIR$/Vorlesungs Termin 3/AufgabeZwei/AufgabeZwei.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BruchOOP/BruchOOP.iml" filepath="$PROJECT_DIR$/BruchOOP/BruchOOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grundlagen/src/Grundlagen.iml" filepath="$PROJECT_DIR$/Grundlagen/src/Grundlagen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Held/Held.iml" filepath="$PROJECT_DIR$/Held/Held.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grundlagen/src/JavaGrundlagenWinFo.iml" filepath="$PROJECT_DIR$/Grundlagen/src/JavaGrundlagenWinFo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kfz/Kfz.iml" filepath="$PROJECT_DIR$/Kfz/Kfz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KontoUebung/KontoUebung.iml" filepath="$PROJECT_DIR$/KontoUebung/KontoUebung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vererbungen/VererbungUebung/VererbungUebung.iml" filepath="$PROJECT_DIR$/Vererbungen/VererbungUebung/VererbungUebung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vererbungen/Vererbungen.iml" filepath="$PROJECT_DIR$/Vererbungen/Vererbungen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vorlesungs Termin 3/Vorlesungs Termin 3.iml" filepath="$PROJECT_DIR$/Vorlesungs Termin 3/Vorlesungs Termin 3.iml" />
+>>>>>>> 231b9a0a7f1570d19c9fc021eeb5cce225f4dae1
     </modules>
   </component>
 </project>
