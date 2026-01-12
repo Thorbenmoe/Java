@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+ollama:
+container_name: ollama
+image: ollama/ollama:latest
+volumes:
+- ollama_data:/root/.ollama
+ports:
+- "11434:11434"
+restart: unless-stopped
+open-webui:
+container_name: open-webui
+image: ghcr.io/open-webui/open-webui:v0.5.20
+volumes:

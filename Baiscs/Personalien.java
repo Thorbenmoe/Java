@@ -1,3 +1,5 @@
+package Baiscs;
+
 import java.util.Scanner;
 
 public class Personalien
